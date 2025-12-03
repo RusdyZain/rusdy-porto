@@ -1,6 +1,6 @@
-import React from 'react';
-import { Heart } from 'lucide-react';
-import { personalInfo } from '../data/mockData';
+import React from "react";
+import { Heart } from "lucide-react";
+import { personalInfo } from "../data/mockData";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -32,13 +32,22 @@ const Footer = () => {
 
           {/* Right - Quick Links */}
           <div className="flex gap-6">
-            <a href="#home" className="text-white/40 hover:text-orange-400 transition-colors text-sm">
+            <a
+              href="#home"
+              className="text-white/40 hover:text-orange-400 transition-colors text-sm"
+            >
               Home
             </a>
-            <a href="#projects" className="text-white/40 hover:text-orange-400 transition-colors text-sm">
+            <a
+              href="#projects"
+              className="text-white/40 hover:text-orange-400 transition-colors text-sm"
+            >
               Projects
             </a>
-            <a href="#contact" className="text-white/40 hover:text-orange-400 transition-colors text-sm">
+            <a
+              href="#contact"
+              className="text-white/40 hover:text-orange-400 transition-colors text-sm"
+            >
               Contact
             </a>
           </div>

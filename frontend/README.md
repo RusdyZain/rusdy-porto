@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Frontend Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This frontend is a single-page application built with Create React App and customized through CRACO so we can override Webpack, Babel, and Tailwind settings without ejecting. The project is managed with **Yarn (Classic)** as declared in `package.json`, so all installation and script commands assume Yarn.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+The key libraries in use are grouped below so it is clear what powers each concern in the UI.
 
-### `npm start`
+- **Core framework** - React 19 (CRA + CRACO) with React DOM and React Router DOM 7 for client-side routing.
+- **Styling & theming** - Tailwind CSS 3, tailwindcss-animate, tailwind-merge, class-variance-authority, clsx, and next-themes for light/dark mode toggles. The Tailwind setup is located in `tailwind.config.js` and `postcss.config.js`.
+- **UI primitives & effects** - Radix UI component primitives (accordion, dialog, tooltip, etc.), shadcn-inspired utilities, cmdk for command menus, embla-carousel-react for sliders, lucide-react icons, sonner for toasts, vaul for drawers, and react-resizable-panels for split layouts.
+- **Forms & validation** - react-hook-form with @hookform/resolvers and zod for schema-based validation, plus input-otp and react-day-picker for specialized inputs.
+- **Data access** - Axios handles HTTP calls to the backend using the base URL defined in `.env` (`REACT_APP_BACKEND_URL`).
+- **Utilities** - date-fns for date helpers and various Radix/React helper packages to compose complex interactions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Environment
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Copy `.env` (already provided) or create one with the variables below before running the app:
 
-### `npm test`
+```
+REACT_APP_BACKEND_URL=<backend base URL>
+WDS_SOCKET_PORT=443
+REACT_APP_ENABLE_VISUAL_EDITS=false
+ENABLE_HEALTH_CHECK=false
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`REACT_APP_BACKEND_URL` is consumed by Axios calls to reach the FastAPI backend.
 
-### `npm run build`
+## Running Locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+cd frontend
+yarn install    # install dependencies
+yarn start      # start the dev server on http://localhost:3000
+yarn build      # produce a production build in /build
+yarn test       # run the CRA test runner
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Hot reload is enabled during `yarn start`, and CRACO ensures the Tailwind/Babel overrides under `craco.config.js` and `plugins/` are applied automatically.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Scripts
 
-### `npm run eject`
+All scripts are defined in `package.json` and proxied through CRACO:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `yarn start` - `craco start` (development server with HMR)
+- `yarn build` - `craco build` (production bundle with minification and hashing)
+- `yarn test` - `craco test` (Jest test runner in watch mode)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Use Yarn to run the scripts so dependency versions remain consistent with `yarn.lock`.

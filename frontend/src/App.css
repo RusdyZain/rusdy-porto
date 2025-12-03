@@ -48,7 +48,8 @@ html {
 
 /* Animation for gradient text */
 @keyframes gradient-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -68,7 +69,10 @@ html {
 }
 
 /* Smooth transitions for interactive elements */
-button, a, input, textarea {
+button,
+a,
+input,
+textarea {
   transition-property: color, background-color, border-color, opacity, transform;
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

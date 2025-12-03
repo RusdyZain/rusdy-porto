@@ -1,8 +1,8 @@
-import React from 'react';
-import { ExternalLink, Github } from 'lucide-react';
-import { projects } from '../data/mockData';
-import { Card } from './ui/card';
-import { Badge } from './ui/badge';
+import React from "react";
+import { ExternalLink, Github } from "lucide-react";
+import { projects } from "../data/mockData";
+import { Card } from "./ui/card";
+import { Badge } from "./ui/badge";
 
 const Projects = () => {
   return (
@@ -21,7 +21,8 @@ const Projects = () => {
             Featured Projects
           </h2>
           <p className="text-white/50 text-lg max-w-2xl mx-auto">
-            Real-world applications across healthtech, mobility, agriculture, and mobile platforms
+            Real-world applications across healthtech, mobility, agriculture,
+            and mobile platforms
           </p>
         </div>
 
@@ -35,9 +36,11 @@ const Projects = () => {
               {/* Project Image */}
               <div className="relative h-64 overflow-hidden">
                 {/* Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-60 group-hover:opacity-40 transition-opacity duration-300`}></div>
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-60 group-hover:opacity-40 transition-opacity duration-300`}
+                ></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                
+
                 {/* Image */}
                 <img
                   src={project.image}

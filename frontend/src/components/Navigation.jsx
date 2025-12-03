@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,24 +9,24 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Summary', href: '#summary' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' }
+    { name: "Home", href: "#home" },
+    { name: "Summary", href: "#summary" },
+    { name: "Experience", href: "#experience" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const scrollToSection = (e, href) => {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
   };
@@ -36,14 +36,17 @@ const Navigation = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-black/60 backdrop-blur-xl border-b border-white/10 shadow-lg'
-            : 'bg-transparent'
+            ? "bg-black/60 backdrop-blur-xl border-b border-white/10 shadow-lg"
+            : "bg-transparent"
         }`}
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#home" className="text-xl font-bold text-white hover:text-orange-400 transition-colors">
+            <a
+              href="#home"
+              className="text-xl font-bold text-white hover:text-orange-400 transition-colors"
+            >
               <span className="bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
                 RR
               </span>
@@ -82,7 +85,10 @@ const Navigation = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
-          <div className="fixed inset-0 bg-black/80 backdrop-blur-xl" onClick={() => setIsMobileMenuOpen(false)}></div>
+          <div
+            className="fixed inset-0 bg-black/80 backdrop-blur-xl"
+            onClick={() => setIsMobileMenuOpen(false)}
+          ></div>
           <div className="fixed top-20 left-0 right-0 bg-black/90 backdrop-blur-xl border-b border-white/10">
             <div className="container mx-auto px-6 py-8">
               <div className="flex flex-col gap-4">

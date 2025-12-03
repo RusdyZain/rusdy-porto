@@ -1,7 +1,7 @@
-import React from 'react';
-import { Calendar, Building2 } from 'lucide-react';
-import { experiences } from '../data/mockData';
-import { Card } from './ui/card';
+import React from "react";
+import { Calendar, Building2 } from "lucide-react";
+import { experiences } from "../data/mockData";
+import { Card } from "./ui/card";
 
 const Experience = () => {
   return (
@@ -33,7 +33,7 @@ const Experience = () => {
             >
               {/* Glow Effect on Hover */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/5 group-hover:to-amber-500/5 transition-all duration-300"></div>
-              
+
               <div className="relative z-10">
                 <div className="flex flex-col md:flex-row md:items-start gap-6">
                   {/* Company Logo Placeholder */}
@@ -62,9 +62,14 @@ const Experience = () => {
                     {/* Highlights */}
                     <ul className="space-y-2 mt-4">
                       {exp.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-white/60">
+                        <li
+                          key={idx}
+                          className="flex items-start gap-3 text-white/60"
+                        >
                           <span className="mt-2 w-1.5 h-1.5 rounded-full bg-orange-400 flex-shrink-0"></span>
-                          <span className="text-sm leading-relaxed">{highlight}</span>
+                          <span className="text-sm leading-relaxed">
+                            {highlight}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -74,7 +79,7 @@ const Experience = () => {
 
               {/* Index Number */}
               <div className="absolute top-6 right-6 text-6xl font-bold text-white/5">
-                {String(index + 1).padStart(2, '0')}
+                {String(index + 1).padStart(2, "0")}
               </div>
             </Card>
           ))}

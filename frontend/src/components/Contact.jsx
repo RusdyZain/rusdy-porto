@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { Send, Mail, MapPin, Phone } from 'lucide-react';
-import { personalInfo } from '../data/mockData';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
-import { toast } from '../hooks/use-toast';
+import React, { useState } from "react";
+import { Send, Mail, MapPin, Phone } from "lucide-react";
+import { personalInfo } from "../data/mockData";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { toast } from "../hooks/use-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -32,7 +32,7 @@ const Contact = () => {
         title: "Message Sent!",
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: "", email: "", subject: "", message: "" });
       setIsSubmitting(false);
     }, 1500);
   };
@@ -61,9 +61,12 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-4">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Contact Information
+              </h3>
               <p className="text-white/60 leading-relaxed">
-                I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
+                I'm always interested in hearing about new projects and
+                opportunities. Feel free to reach out!
               </p>
             </div>
 
@@ -101,7 +104,9 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-white/50 text-sm">Location</p>
-                  <p className="text-white font-medium">{personalInfo.location}</p>
+                  <p className="text-white font-medium">
+                    {personalInfo.location}
+                  </p>
                 </div>
               </div>
             </div>
@@ -134,7 +139,10 @@ const Contact = () => {
           <div className="p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-white/70 text-sm font-medium mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-white/70 text-sm font-medium mb-2"
+                >
                   Your Name
                 </label>
                 <Input
@@ -150,7 +158,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-white/70 text-sm font-medium mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-white/70 text-sm font-medium mb-2"
+                >
                   Email Address
                 </label>
                 <Input
@@ -166,7 +177,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-white/70 text-sm font-medium mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-white/70 text-sm font-medium mb-2"
+                >
                   Subject
                 </label>
                 <Input
@@ -182,7 +196,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-white/70 text-sm font-medium mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-white/70 text-sm font-medium mb-2"
+                >
                   Message
                 </label>
                 <Textarea
