@@ -15,9 +15,9 @@ const Hero = () => {
     >
       {/* Cinematic Background with Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-zinc-900 to-black">
-        <div className="absolute inset-0 bg-gradient-to-tr from-orange-600/10 via-transparent to-amber-600/10"></div>
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-orange-500/20 to-transparent blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-amber-500/20 to-transparent blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-transparent to-cyan-600/10"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-blue-500/20 to-transparent blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-cyan-500/20 to-transparent blur-3xl"></div>
       </div>
 
       {/* Content Grid */}
@@ -33,7 +33,7 @@ const Hero = () => {
 
             {/* Role Tag */}
             <div>
-              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-gradient-to-r from-orange-500/20 to-amber-500/20 text-amber-400 border border-amber-500/30">
+              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-500/30">
                 {personalInfo.title.split("&")[0].trim()}
               </span>
             </div>
@@ -56,8 +56,8 @@ const Hero = () => {
             {/* Contact Icons */}
             <div className="flex flex-wrap gap-3">
               <a href={`mailto:${personalInfo.email}`} className="group">
-                <div className="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-orange-500/50 transition-all duration-300">
-                  <Mail className="w-5 h-5 text-white/70 group-hover:text-orange-400 transition-colors" />
+                <div className="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-blue-500/50 transition-all duration-300">
+                  <Mail className="w-5 h-5 text-white/70 group-hover:text-blue-300 transition-colors" />
                 </div>
               </a>
               <a
@@ -66,8 +66,8 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <div className="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-orange-500/50 transition-all duration-300">
-                  <Linkedin className="w-5 h-5 text-white/70 group-hover:text-orange-400 transition-colors" />
+                <div className="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-blue-500/50 transition-all duration-300">
+                  <Linkedin className="w-5 h-5 text-white/70 group-hover:text-blue-300 transition-colors" />
                 </div>
               </a>
               <a
@@ -76,18 +76,18 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <div className="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-orange-500/50 transition-all duration-300">
-                  <Github className="w-5 h-5 text-white/70 group-hover:text-orange-400 transition-colors" />
+                <div className="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-blue-500/50 transition-all duration-300">
+                  <Github className="w-5 h-5 text-white/70 group-hover:text-blue-300 transition-colors" />
                 </div>
               </a>
               <a href={`tel:${personalInfo.phone}`} className="group">
-                <div className="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-orange-500/50 transition-all duration-300">
-                  <Phone className="w-5 h-5 text-white/70 group-hover:text-orange-400 transition-colors" />
+                <div className="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-blue-500/50 transition-all duration-300">
+                  <Phone className="w-5 h-5 text-white/70 group-hover:text-blue-300 transition-colors" />
                 </div>
               </a>
               <div className="group cursor-pointer">
-                <div className="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-orange-500/50 transition-all duration-300">
-                  <MapPin className="w-5 h-5 text-white/70 group-hover:text-orange-400 transition-colors" />
+                <div className="p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-blue-500/50 transition-all duration-300">
+                  <MapPin className="w-5 h-5 text-white/70 group-hover:text-blue-300 transition-colors" />
                 </div>
               </div>
             </div>
@@ -96,7 +96,7 @@ const Hero = () => {
             <div>
               <Button
                 onClick={handleDownloadCV}
-                className="group px-8 py-6 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-black font-semibold text-base shadow-lg shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-300 flex items-center gap-2"
+                className="group px-8 py-6 rounded-full bg-gradient-to-r from-blue-400 to-cyan-500 hover:from-blue-500 hover:to-cyan-600 text-white font-semibold text-base shadow-lg shadow-blue-500/40 hover:shadow-blue-500/70 transition-all duration-300 flex items-center gap-2"
               >
                 <Download className="w-5 h-5 group-hover:animate-bounce" />
                 Download CV
@@ -107,14 +107,14 @@ const Hero = () => {
           {/* Right Content - Portrait */}
           <div className="relative lg:block hidden">
             {/* Glow Effects */}
-            <div className="absolute -top-20 -right-20 w-96 h-96 bg-orange-500/30 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"></div>
+            <div className="absolute -top-20 -right-20 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
 
             {/* Portrait Container */}
             <div className="relative z-10">
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                 {/* Rim Light Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-l from-orange-500/40 via-transparent to-transparent z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-l from-blue-500/40 via-transparent to-transparent z-10"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
 
                 {/* Image */}

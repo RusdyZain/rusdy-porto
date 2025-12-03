@@ -41,12 +41,12 @@ const Contact = () => {
     <section id="contact" className="relative py-24 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-900/10 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent"></div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-orange-500/10 text-orange-400 border border-orange-500/20 mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">
             Get In Touch
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -74,10 +74,10 @@ const Contact = () => {
             <div className="space-y-4">
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="group flex items-center gap-4 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-orange-500/50 transition-all duration-300"
+                className="group flex items-center gap-4 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 transition-all duration-300"
               >
-                <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/20 group-hover:bg-orange-500/20 transition-colors">
-                  <Mail className="w-5 h-5 text-orange-400" />
+                <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors">
+                  <Mail className="w-5 h-5 text-blue-300" />
                 </div>
                 <div>
                   <p className="text-white/50 text-sm">Email</p>
@@ -87,10 +87,10 @@ const Contact = () => {
 
               <a
                 href={`tel:${personalInfo.phone}`}
-                className="group flex items-center gap-4 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-orange-500/50 transition-all duration-300"
+                className="group flex items-center gap-4 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 transition-all duration-300"
               >
-                <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/20 group-hover:bg-orange-500/20 transition-colors">
-                  <Phone className="w-5 h-5 text-orange-400" />
+                <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors">
+                  <Phone className="w-5 h-5 text-blue-300" />
                 </div>
                 <div>
                   <p className="text-white/50 text-sm">Phone</p>
@@ -99,8 +99,8 @@ const Contact = () => {
               </a>
 
               <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10">
-                <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/20">
-                  <MapPin className="w-5 h-5 text-orange-400" />
+                <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
+                  <MapPin className="w-5 h-5 text-blue-300" />
                 </div>
                 <div>
                   <p className="text-white/50 text-sm">Location</p>
@@ -119,7 +119,7 @@ const Contact = () => {
                   href={`https://${personalInfo.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-2 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-orange-500/20 hover:border-orange-500/50 text-white/70 hover:text-white transition-all duration-300 text-sm font-medium"
+                  className="px-6 py-2 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-blue-500/20 hover:border-blue-500/50 text-white/70 hover:text-white transition-all duration-300 text-sm font-medium"
                 >
                   LinkedIn
                 </a>
@@ -127,7 +127,7 @@ const Contact = () => {
                   href={`https://${personalInfo.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-2 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-orange-500/20 hover:border-orange-500/50 text-white/70 hover:text-white transition-all duration-300 text-sm font-medium"
+                  className="px-6 py-2 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-blue-500/20 hover:border-blue-500/50 text-white/70 hover:text-white transition-all duration-300 text-sm font-medium"
                 >
                   GitHub
                 </a>
@@ -152,7 +152,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-orange-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   placeholder="John Doe"
                 />
               </div>
@@ -171,7 +171,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-orange-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   placeholder="john@example.com"
                 />
               </div>
@@ -190,7 +190,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-orange-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   placeholder="Project Discussion"
                 />
               </div>
@@ -209,7 +209,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-orange-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500/20 resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/20 resize-none"
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -217,7 +217,7 @@ const Contact = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

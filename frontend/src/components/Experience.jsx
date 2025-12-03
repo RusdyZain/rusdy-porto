@@ -8,12 +8,12 @@ const Experience = () => {
     <section id="experience" className="relative py-24 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-900/10 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent"></div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-orange-500/10 text-orange-400 border border-orange-500/20 mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">
             Career Journey
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -29,17 +29,17 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <Card
               key={exp.id}
-              className="group relative p-8 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-orange-500/50 rounded-2xl transition-all duration-300 hover:transform hover:scale-[1.02]"
+              className="group relative p-8 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 rounded-2xl transition-all duration-300 hover:transform hover:scale-[1.02]"
             >
               {/* Glow Effect on Hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/5 group-hover:to-amber-500/5 transition-all duration-300"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/5 group-hover:to-cyan-500/5 transition-all duration-300"></div>
 
               <div className="relative z-10">
                 <div className="flex flex-col md:flex-row md:items-start gap-6">
                   {/* Company Logo Placeholder */}
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/20 border border-orange-500/30 flex items-center justify-center">
-                      <Building2 className="w-8 h-8 text-orange-400" />
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center">
+                      <Building2 className="w-8 h-8 text-blue-300" />
                     </div>
                   </div>
 
@@ -47,7 +47,7 @@ const Experience = () => {
                   <div className="flex-1 space-y-3">
                     {/* Role & Company */}
                     <div>
-                      <h3 className="text-2xl font-semibold text-white group-hover:text-orange-400 transition-colors">
+                      <h3 className="text-2xl font-semibold text-white group-hover:text-blue-300 transition-colors">
                         {exp.role}
                       </h3>
                       <p className="text-white/60 text-lg">{exp.company}</p>
@@ -66,7 +66,7 @@ const Experience = () => {
                           key={idx}
                           className="flex items-start gap-3 text-white/60"
                         >
-                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-orange-400 flex-shrink-0"></span>
+                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
                           <span className="text-sm leading-relaxed">
                             {highlight}
                           </span>

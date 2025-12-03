@@ -45,11 +45,13 @@ const Navigation = () => {
             {/* Logo */}
             <a
               href="#home"
-              className="text-xl font-bold text-white hover:text-orange-400 transition-colors"
+              className="flex items-center gap-2 text-white hover:opacity-90 transition-opacity"
             >
-              <span className="bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
-                RR
-              </span>
+              <img
+                src="/cantures-logo.png"
+                alt="Cantures Logo"
+                className="h-10 w-auto object-contain"
+              />
             </a>
 
             {/* Desktop Navigation */}
@@ -62,7 +64,7 @@ const Navigation = () => {
                   className="text-white/70 hover:text-white transition-colors text-sm font-medium relative group"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-400 to-amber-500 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-500 group-hover:w-full transition-all duration-300"></span>
                 </a>
               ))}
             </div>

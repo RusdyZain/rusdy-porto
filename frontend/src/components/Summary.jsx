@@ -8,12 +8,12 @@ const Summary = () => {
     <section id="summary" className="relative py-24 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black"></div>
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-900/10 via-transparent to-transparent"></div>
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent"></div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-orange-500/10 text-orange-400 border border-orange-500/20 mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">
             Background
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -26,8 +26,8 @@ const Summary = () => {
           <Card className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl space-y-6">
             {/* Header */}
             <div className="flex items-start gap-4">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/20 border border-orange-500/30">
-                <GraduationCap className="w-6 h-6 text-orange-400" />
+              <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30">
+                <GraduationCap className="w-6 h-6 text-blue-300" />
               </div>
               <div className="flex-1">
                 <h3 className="text-2xl font-bold text-white mb-1">Education</h3>
@@ -39,9 +39,9 @@ const Summary = () => {
             <div className="space-y-2">
               <h4 className="text-xl font-semibold text-white">{education.degree}</h4>
               <p className="text-white/60">{education.university}</p>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
-                <TrendingUp className="w-4 h-4 text-orange-400" />
-                <span className="text-orange-400 font-semibold text-sm">GPA: {education.gpa}</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+                <TrendingUp className="w-4 h-4 text-blue-300" />
+                <span className="text-blue-300 font-semibold text-sm">GPA: {education.gpa}</span>
               </div>
             </div>
 
@@ -54,7 +54,7 @@ const Summary = () => {
               <ul className="space-y-2 ml-6">
                 {education.roles.map((role, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-white/50 text-sm">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-orange-400 flex-shrink-0"></span>
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
                     <span>{role}</span>
                   </li>
                 ))}
@@ -70,7 +70,7 @@ const Summary = () => {
               <ul className="space-y-2 ml-6">
                 {education.awards.map((award, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-white/50 text-sm">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span>
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0"></span>
                     <span>{award}</span>
                   </li>
                 ))}
@@ -103,7 +103,7 @@ const Summary = () => {
                   </div>
                   <div className="relative h-2 bg-white/5 rounded-full overflow-hidden">
                     <div
-                      className="absolute inset-y-0 left-0 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full transition-all duration-1000 ease-out"
+                      className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-1000 ease-out"
                       style={{ width: `${lang.level}%` }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
@@ -116,15 +116,15 @@ const Summary = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
               <div className="text-center">
-                <div className="text-2xl font-bold text-orange-400 mb-1">3</div>
+                <div className="text-2xl font-bold text-blue-300 mb-1">3</div>
                 <div className="text-white/50 text-xs">Languages</div>
               </div>
               <div className="text-center border-x border-white/10">
-                <div className="text-2xl font-bold text-orange-400 mb-1">5+</div>
+                <div className="text-2xl font-bold text-blue-300 mb-1">5+</div>
                 <div className="text-white/50 text-xs">Projects</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-orange-400 mb-1">3.88</div>
+                <div className="text-2xl font-bold text-blue-300 mb-1">3.88</div>
                 <div className="text-white/50 text-xs">GPA</div>
               </div>
             </div>

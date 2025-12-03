@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="relative py-12 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-black"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-orange-900/5 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/5 to-transparent"></div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         {/* Top Border */}
@@ -26,7 +26,7 @@ const Footer = () => {
           {/* Center - Made with Love */}
           <div className="flex items-center gap-2 text-white/40 text-sm">
             <span>Built with</span>
-            <Heart className="w-4 h-4 text-orange-400 fill-orange-400" />
+            <Heart className="w-4 h-4 text-blue-400 fill-blue-400" />
             <span>using React & Tailwind CSS</span>
           </div>
 
@@ -34,19 +34,19 @@ const Footer = () => {
           <div className="flex gap-6">
             <a
               href="#home"
-              className="text-white/40 hover:text-orange-400 transition-colors text-sm"
+              className="text-white/40 hover:text-blue-300 transition-colors text-sm"
             >
               Home
             </a>
             <a
               href="#projects"
-              className="text-white/40 hover:text-orange-400 transition-colors text-sm"
+              className="text-white/40 hover:text-blue-300 transition-colors text-sm"
             >
               Projects
             </a>
             <a
               href="#contact"
-              className="text-white/40 hover:text-orange-400 transition-colors text-sm"
+              className="text-white/40 hover:text-blue-300 transition-colors text-sm"
             >
               Contact
             </a>
@@ -55,7 +55,7 @@ const Footer = () => {
 
         {/* Decorative Element */}
         <div className="mt-8 flex justify-center">
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent"></div>
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
         </div>
       </div>
     </footer>

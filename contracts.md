@@ -1,12 +1,15 @@
 # Portfolio Backend Integration Contracts
 
 ## Overview
+
 This document outlines the API contracts and integration plan for Rifki Rusdi Satma Putra's portfolio website backend implementation.
 
 ## Current State: Frontend-Only with Mock Data
+
 **Mock Data Location:** `/app/frontend/src/data/mockData.js`
 
 ### Mocked Data Includes:
+
 - ✅ Personal information (name, title, bio, contact details)
 - ✅ Experience history (5 positions)
 - ✅ Skills & technologies (15 items across 6 categories)
@@ -20,6 +23,7 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 ### 1. Database Models (MongoDB)
 
 #### User/Portfolio Model
+
 ```javascript
 {
   _id: ObjectId,
@@ -40,6 +44,7 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 ```
 
 #### Experience Model
+
 ```javascript
 {
   _id: ObjectId,
@@ -55,6 +60,7 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 ```
 
 #### Skill Model
+
 ```javascript
 {
   _id: ObjectId,
@@ -67,6 +73,7 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 ```
 
 #### Project Model
+
 ```javascript
 {
   _id: ObjectId,
@@ -86,6 +93,7 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 ```
 
 #### Education Model
+
 ```javascript
 {
   _id: ObjectId,
@@ -100,6 +108,7 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 ```
 
 #### Language Model
+
 ```javascript
 {
   _id: ObjectId,
@@ -111,6 +120,7 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 ```
 
 #### ContactMessage Model
+
 ```javascript
 {
   _id: ObjectId,
@@ -126,6 +136,7 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 ### 2. API Endpoints
 
 #### Portfolio Endpoints
+
 - `GET /api/portfolio/personal` - Get personal information
 - `GET /api/portfolio/experience` - Get all experiences
 - `GET /api/portfolio/skills` - Get all skills (grouped by category)
@@ -135,9 +146,11 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 - `GET /api/portfolio/all` - Get complete portfolio data (single request)
 
 #### Contact Endpoint
+
 - `POST /api/contact` - Submit contact form message
 
 #### Admin Endpoints (Future Enhancement)
+
 - `PUT /api/admin/personal` - Update personal info
 - `POST /api/admin/experience` - Add experience
 - `PUT /api/admin/experience/:id` - Update experience
@@ -147,23 +160,29 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 ### 3. Frontend Integration Points
 
 #### Files to Update:
+
 1. **Hero.jsx**
+
    - Replace `import { personalInfo }` with API call
    - Use `GET /api/portfolio/personal`
 
 2. **Experience.jsx**
+
    - Replace `import { experiences }` with API call
    - Use `GET /api/portfolio/experience`
 
 3. **Skills.jsx**
+
    - Replace `import { skills }` with API call
    - Use `GET /api/portfolio/skills`
 
 4. **Projects.jsx**
+
    - Replace `import { projects }` with API call
    - Use `GET /api/portfolio/projects`
 
 5. **Summary.jsx**
+
    - Replace `import { education, languages }` with API calls
    - Use `GET /api/portfolio/education` and `GET /api/portfolio/languages`
 
@@ -175,11 +194,13 @@ This document outlines the API contracts and integration plan for Rifki Rusdi Sa
 ### 4. CV Download Feature
 
 **Current State:** Direct link to uploaded CV file
+
 ```javascript
-cvUrl: "https://customer-assets.emergentagent.com/job_dev-glassmorphism/artifacts/bwz28coj_CV%20Software%20Developer%20Rusdy.docx"
+cvUrl: "https://docs.google.com/document/d/1--JL87xANrbNkV1Tzlzq3BOPUeFQI-G-/edit?usp=sharing&ouid=108859602331194458341&rtpof=true&sd=true";
 ```
 
 **Backend Implementation:**
+
 - Store CV file in `/app/backend/static/cv/` directory
 - Create endpoint: `GET /api/portfolio/cv/download`
 - Serve file with proper headers for download
@@ -187,11 +208,13 @@ cvUrl: "https://customer-assets.emergentagent.com/job_dev-glassmorphism/artifact
 ### 5. Data Migration Strategy
 
 **Step 1:** Create migration script to populate database
+
 - Read mock data from `mockData.js`
 - Transform and insert into MongoDB collections
 - Verify data integrity
 
 **Step 2:** Create data seeding script
+
 - `/app/backend/seed/seedData.py`
 - Populate initial portfolio data
 - Run once during backend setup
@@ -206,14 +229,14 @@ cvUrl: "https://customer-assets.emergentagent.com/job_dev-glassmorphism/artifact
 const usePortfolio = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     fetch(`${BACKEND_URL}/api/portfolio/all`)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(setData)
       .finally(() => setLoading(false));
   }, []);
-  
+
   return { data, loading };
 };
 ```
@@ -227,24 +250,21 @@ const usePortfolio = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   setIsSubmitting(true);
-  
+
   try {
-    const response = await axios.post(
-      `${BACKEND_URL}/api/contact`,
-      formData
-    );
-    
+    const response = await axios.post(`${BACKEND_URL}/api/contact`, formData);
+
     toast({
       title: "Message Sent!",
       description: response.data.message,
     });
-    
-    setFormData({ name: '', email: '', subject: '', message: '' });
+
+    setFormData({ name: "", email: "", subject: "", message: "" });
   } catch (error) {
     toast({
       title: "Error",
       description: "Failed to send message. Please try again.",
-      variant: "destructive"
+      variant: "destructive",
     });
   } finally {
     setIsSubmitting(false);
@@ -255,6 +275,7 @@ const handleSubmit = async (e) => {
 ## Testing Checklist
 
 ### Backend API Testing
+
 - [ ] All GET endpoints return correct data structure
 - [ ] POST /api/contact validates required fields
 - [ ] CV download serves file correctly
@@ -262,6 +283,7 @@ const handleSubmit = async (e) => {
 - [ ] CORS configured properly
 
 ### Frontend Integration Testing
+
 - [ ] All sections load data from API
 - [ ] Loading states display properly
 - [ ] Error states handled gracefully
@@ -271,6 +293,7 @@ const handleSubmit = async (e) => {
 - [ ] No console errors
 
 ### Performance Testing
+
 - [ ] Page load time < 3 seconds
 - [ ] Images optimized and load quickly
 - [ ] API responses < 500ms
@@ -278,6 +301,7 @@ const handleSubmit = async (e) => {
 - [ ] Responsive on all screen sizes
 
 ## Notes
+
 - All API endpoints should return consistent JSON structure
 - Implement proper error handling and status codes
 - Add request validation using Pydantic models

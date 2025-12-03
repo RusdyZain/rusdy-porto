@@ -9,12 +9,12 @@ const Projects = () => {
     <section id="projects" className="relative py-24 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-orange-900/10 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent"></div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-orange-500/10 text-orange-400 border border-orange-500/20 mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">
             Portfolio Showcase
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -31,7 +31,7 @@ const Projects = () => {
           {projects.map((project) => (
             <Card
               key={project.id}
-              className="group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-orange-500/50 transition-all duration-500"
+              className="group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 transition-all duration-500"
             >
               {/* Project Image */}
               <div className="relative h-64 overflow-hidden">
@@ -60,7 +60,7 @@ const Projects = () => {
               <div className="p-8 space-y-4">
                 {/* Title & Subtitle */}
                 <div>
-                  <h3 className="text-2xl font-bold text-white group-hover:text-orange-400 transition-colors mb-1">
+                  <h3 className="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors mb-1">
                     {project.title}
                   </h3>
                   <p className="text-white/50 text-sm">{project.subtitle}</p>
@@ -85,11 +85,11 @@ const Projects = () => {
 
                 {/* Action Buttons */}
                 <div className="flex gap-3 pt-4">
-                  <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-orange-500/20 hover:border-orange-500/50 text-white/70 hover:text-white transition-all duration-300">
+                  <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-blue-500/20 hover:border-blue-500/50 text-white/70 hover:text-white transition-all duration-300">
                     <ExternalLink className="w-4 h-4" />
                     <span className="text-sm font-medium">View Live</span>
                   </button>
-                  <button className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-orange-500/20 hover:border-orange-500/50 text-white/70 hover:text-white transition-all duration-300">
+                  <button className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-blue-500/20 hover:border-blue-500/50 text-white/70 hover:text-white transition-all duration-300">
                     <Github className="w-4 h-4" />
                   </button>
                 </div>
@@ -97,7 +97,7 @@ const Projects = () => {
 
               {/* Hover Glow Effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/20 rounded-full blur-3xl"></div>
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl"></div>
               </div>
             </Card>
           ))}
