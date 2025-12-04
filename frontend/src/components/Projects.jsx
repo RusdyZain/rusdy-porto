@@ -1,13 +1,14 @@
 import React from "react";
 import { ExternalLink, Github } from "lucide-react";
-import { projects } from "../data/mockData";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Skeleton } from "./ui/skeleton";
+import { useLocalizedContent } from "../context/LanguageContext";
 
 const Projects = () => {
   const [projectList, setProjectList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const { projects, projectsSection } = useLocalizedContent();
 
   React.useEffect(() => {
     let active = true;
@@ -32,7 +33,7 @@ const Projects = () => {
     return () => {
       active = false;
     };
-  }, []);
+  }, [projects]);
 
   return (
     <section id="projects" className="relative py-24 overflow-hidden">
@@ -44,14 +45,13 @@ const Projects = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">
-            Portfolio Showcase
+            {projectsSection.badge}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Featured Projects
+            {projectsSection.heading}
           </h2>
           <p className="text-white/50 text-lg max-w-2xl mx-auto">
-            Real-world applications across healthtech, mobility, agriculture,
-            and mobile platforms
+            {projectsSection.description}
           </p>
         </div>
 
@@ -59,10 +59,17 @@ const Projects = () => {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
           {isLoading
             ? Array.from({ length: 4 }).map((_, index) => (
-                <ProjectCardSkeleton key={`skeleton-${index}`} />
+                <ProjectCardSkeleton
+                  key={`skeleton-${index}`}
+                  copy={projectsSection}
+                />
               ))
             : projectList.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  copy={projectsSection}
+                />
               ))}
         </div>
       </div>
@@ -70,7 +77,7 @@ const Projects = () => {
   );
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, copy }) => {
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const [imageError, setImageError] = React.useState(false);
   const buttonBaseClass =
@@ -101,7 +108,7 @@ const ProjectCard = ({ project }) => {
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 bg-black/40 backdrop-blur-md">
             <Skeleton className="w-16 h-16 rounded-full bg-white/10" />
             <span className="text-xs uppercase tracking-wide text-white/60">
-              Loading preview
+              {copy.loadingPreview}
             </span>
           </div>
         )}
@@ -109,10 +116,10 @@ const ProjectCard = ({ project }) => {
         {imageError && (
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-1 bg-black/60">
             <span className="text-sm font-medium text-white/80">
-              Preview unavailable
+              {copy.previewUnavailable}
             </span>
             <span className="text-xs text-white/50">
-              Asset path needs attention
+              {copy.assetAttention}
             </span>
           </div>
         )}
@@ -158,12 +165,17 @@ const ProjectCard = ({ project }) => {
             aria-disabled={!project.liveUrl}
             title={
               project.liveUrl
-                ? `Lihat ${project.title}`
-                : "Link live belum tersedia"
+                ? `${copy.viewLiveTitlePrefix} ${project.title}`
+                : copy.liveUnavailable
+            }
+            aria-label={
+              project.liveUrl
+                ? `${copy.viewLiveTitlePrefix} ${project.title}`
+                : copy.liveUnavailable
             }
           >
             <ExternalLink className="w-4 h-4" />
-            <span className="text-sm font-medium">View Live</span>
+            <span className="text-sm font-medium">{copy.viewLive}</span>
           </a>
           <a
             href={project.repoUrl || undefined}
@@ -174,14 +186,14 @@ const ProjectCard = ({ project }) => {
             }`}
             aria-label={
               project.repoUrl
-                ? `Buka repository ${project.title}`
-                : "Repository belum tersedia"
+                ? `${copy.repoAriaPrefix} ${project.title}`
+                : copy.repoUnavailable
             }
             aria-disabled={!project.repoUrl}
             title={
               project.repoUrl
-                ? `Repository ${project.title}`
-                : "Repository belum tersedia"
+                ? `${copy.repoTitlePrefix} ${project.title}`
+                : copy.repoUnavailable
             }
           >
             <Github className="w-4 h-4" />
@@ -196,13 +208,15 @@ const ProjectCard = ({ project }) => {
   );
 };
 
-const ProjectCardSkeleton = () => (
+const ProjectCardSkeleton = ({ copy }) => (
   <Card className="relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
     <div className="relative h-64 overflow-hidden">
       <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-white/5" />
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-white/50">
         <Skeleton className="w-16 h-16 rounded-full bg-white/10" />
-        <span className="text-xs uppercase tracking-wider">Menyiapkan foto</span>
+        <span className="text-xs uppercase tracking-wider">
+          {copy.skeletonPreparing}
+        </span>
       </div>
     </div>
     <div className="p-8 space-y-4">

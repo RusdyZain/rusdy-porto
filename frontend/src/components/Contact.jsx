@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Send, Mail, MapPin, Phone } from "lucide-react";
-import { personalInfo } from "../data/mockData";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { toast } from "../hooks/use-toast";
+import { useLocalizedContent } from "../context/LanguageContext";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +14,7 @@ const Contact = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { personalInfo, contactSection } = useLocalizedContent();
 
   const handleChange = (e) => {
     setFormData({
@@ -29,8 +30,8 @@ const Contact = () => {
     // Mock form submission
     setTimeout(() => {
       toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: contactSection.toast.title,
+        description: contactSection.toast.description,
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
       setIsSubmitting(false);
@@ -47,13 +48,13 @@ const Contact = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">
-            Get In Touch
+            {contactSection.badge}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Let's Work Together
+            {contactSection.heading}
           </h2>
           <p className="text-white/50 text-lg max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how we can collaborate
+            {contactSection.description}
           </p>
         </div>
 
@@ -62,11 +63,10 @@ const Contact = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-white mb-4">
-                Contact Information
+                {contactSection.infoTitle}
               </h3>
               <p className="text-white/60 leading-relaxed">
-                I'm always interested in hearing about new projects and
-                opportunities. Feel free to reach out!
+                {contactSection.infoDescription}
               </p>
             </div>
 
@@ -80,7 +80,9 @@ const Contact = () => {
                   <Mail className="w-5 h-5 text-blue-300" />
                 </div>
                 <div>
-                  <p className="text-white/50 text-sm">Email</p>
+                  <p className="text-white/50 text-sm">
+                    {contactSection.details.email}
+                  </p>
                   <p className="text-white font-medium">{personalInfo.email}</p>
                 </div>
               </a>
@@ -93,7 +95,9 @@ const Contact = () => {
                   <Phone className="w-5 h-5 text-blue-300" />
                 </div>
                 <div>
-                  <p className="text-white/50 text-sm">Phone</p>
+                  <p className="text-white/50 text-sm">
+                    {contactSection.details.phone}
+                  </p>
                   <p className="text-white font-medium">{personalInfo.phone}</p>
                 </div>
               </a>
@@ -103,7 +107,9 @@ const Contact = () => {
                   <MapPin className="w-5 h-5 text-blue-300" />
                 </div>
                 <div>
-                  <p className="text-white/50 text-sm">Location</p>
+                  <p className="text-white/50 text-sm">
+                    {contactSection.details.location}
+                  </p>
                   <p className="text-white font-medium">
                     {personalInfo.location}
                   </p>
@@ -113,7 +119,9 @@ const Contact = () => {
 
             {/* Social Links */}
             <div className="pt-6">
-              <p className="text-white/50 text-sm mb-4">Follow me on</p>
+              <p className="text-white/50 text-sm mb-4">
+                {contactSection.details.follow}
+              </p>
               <div className="flex gap-3">
                 <a
                   href={`https://${personalInfo.linkedin}`}
@@ -121,7 +129,7 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="px-6 py-2 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-blue-500/20 hover:border-blue-500/50 text-white/70 hover:text-white transition-all duration-300 text-sm font-medium"
                 >
-                  LinkedIn
+                  {contactSection.details.linkedin}
                 </a>
                 <a
                   href={`https://${personalInfo.github}`}
@@ -129,7 +137,7 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="px-6 py-2 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-blue-500/20 hover:border-blue-500/50 text-white/70 hover:text-white transition-all duration-300 text-sm font-medium"
                 >
-                  GitHub
+                  {contactSection.details.github}
                 </a>
               </div>
             </div>
@@ -143,7 +151,7 @@ const Contact = () => {
                   htmlFor="name"
                   className="block text-white/70 text-sm font-medium mb-2"
                 >
-                  Your Name
+                  {contactSection.form.name.label}
                 </label>
                 <Input
                   type="text"
@@ -153,7 +161,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  placeholder="John Doe"
+                  placeholder={contactSection.form.name.placeholder}
                 />
               </div>
 
@@ -162,7 +170,7 @@ const Contact = () => {
                   htmlFor="email"
                   className="block text-white/70 text-sm font-medium mb-2"
                 >
-                  Email Address
+                  {contactSection.form.email.label}
                 </label>
                 <Input
                   type="email"
@@ -172,7 +180,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  placeholder="john@example.com"
+                  placeholder={contactSection.form.email.placeholder}
                 />
               </div>
 
@@ -181,7 +189,7 @@ const Contact = () => {
                   htmlFor="subject"
                   className="block text-white/70 text-sm font-medium mb-2"
                 >
-                  Subject
+                  {contactSection.form.subject.label}
                 </label>
                 <Input
                   type="text"
@@ -191,7 +199,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  placeholder="Project Discussion"
+                  placeholder={contactSection.form.subject.placeholder}
                 />
               </div>
 
@@ -200,7 +208,7 @@ const Contact = () => {
                   htmlFor="message"
                   className="block text-white/70 text-sm font-medium mb-2"
                 >
-                  Message
+                  {contactSection.form.message.label}
                 </label>
                 <Textarea
                   id="message"
@@ -210,7 +218,7 @@ const Contact = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/20 resize-none"
-                  placeholder="Tell me about your project..."
+                  placeholder={contactSection.form.message.placeholder}
                 />
               </div>
 
@@ -222,12 +230,12 @@ const Contact = () => {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    Sending...
+                    {contactSection.form.submitSending}
                   </>
                 ) : (
                   <>
                     <Send className="w-5 h-5" />
-                    Send Message
+                    {contactSection.form.submitIdle}
                   </>
                 )}
               </Button>

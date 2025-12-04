@@ -1,9 +1,10 @@
 import React from "react";
 import { Heart } from "lucide-react";
-import { personalInfo } from "../data/mockData";
+import { useLocalizedContent } from "../context/LanguageContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { personalInfo, footer } = useLocalizedContent();
 
   return (
     <footer className="relative py-12 overflow-hidden">
@@ -19,37 +20,28 @@ const Footer = () => {
           {/* Left - Copyright */}
           <div className="text-center md:text-left">
             <p className="text-white/40 text-sm">
-              © {currentYear} {personalInfo.name}. All rights reserved.
+              &copy; {currentYear} {personalInfo.name}. {footer.rights}
             </p>
           </div>
 
           {/* Center - Made with Love */}
           <div className="flex items-center gap-2 text-white/40 text-sm">
-            <span>Built with</span>
+            <span>{footer.builtWith}</span>
             <Heart className="w-4 h-4 text-blue-400 fill-blue-400" />
-            <span>using React & Tailwind CSS</span>
+            <span>{footer.using}</span>
           </div>
 
           {/* Right - Quick Links */}
           <div className="flex gap-6">
-            <a
-              href="#home"
-              className="text-white/40 hover:text-blue-300 transition-colors text-sm"
-            >
-              Home
-            </a>
-            <a
-              href="#projects"
-              className="text-white/40 hover:text-blue-300 transition-colors text-sm"
-            >
-              Projects
-            </a>
-            <a
-              href="#contact"
-              className="text-white/40 hover:text-blue-300 transition-colors text-sm"
-            >
-              Contact
-            </a>
+            {footer.quickLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-white/40 hover:text-blue-300 transition-colors text-sm"
+              >
+                {link.name}
+              </a>
+            ))}
           </div>
         </div>
 

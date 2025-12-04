@@ -1,41 +1,13 @@
 import React from "react";
 import * as LucideIcons from "lucide-react";
-import { skills } from "../data/mockData";
+import { useLocalizedContent } from "../context/LanguageContext";
 
 const Skills = () => {
+  const { skills, skillsSection } = useLocalizedContent();
   const getIcon = (iconName) => {
     const Icon = LucideIcons[iconName] || LucideIcons.Code;
     return <Icon className="w-6 h-6" />;
   };
-
-  const categories = [
-    {
-      id: "frontend",
-      name: "Frontend",
-      color: "from-blue-500/20 to-cyan-500/20",
-    },
-    {
-      id: "backend",
-      name: "Backend",
-      color: "from-green-500/20 to-emerald-500/20",
-    },
-    {
-      id: "mobile",
-      name: "Mobile",
-      color: "from-purple-500/20 to-pink-500/20",
-    },
-    {
-      id: "database",
-      name: "Database",
-      color: "from-blue-600/20 to-cyan-500/20",
-    },
-    { id: "devops", name: "DevOps", color: "from-red-500/20 to-rose-500/20" },
-    {
-      id: "design",
-      name: "Design",
-      color: "from-indigo-500/20 to-violet-500/20",
-    },
-  ];
 
   return (
     <section id="skills" className="relative py-24 overflow-hidden">
@@ -46,19 +18,19 @@ const Skills = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">
-            Technical Arsenal
+            {skillsSection.badge}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Skills & Technologies
+            {skillsSection.heading}
           </h2>
           <p className="text-white/50 text-lg max-w-2xl mx-auto">
-            Modern tech stack for building scalable applications
+            {skillsSection.description}
           </p>
         </div>
 
         {/* Skills Grid by Category */}
         <div className="max-w-6xl mx-auto space-y-12">
-          {categories.map((category) => {
+          {skillsSection.categories.map((category) => {
             const categorySkills = skills.filter(
               (skill) => skill.category === category.id
             );

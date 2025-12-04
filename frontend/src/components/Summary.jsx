@@ -1,9 +1,11 @@
 import React from "react";
 import { GraduationCap, Award, Users, TrendingUp } from "lucide-react";
-import { education, languages } from "../data/mockData";
 import { Card } from "./ui/card";
+import { useLocalizedContent } from "../context/LanguageContext";
 
 const Summary = () => {
+  const { education, languages, summary } = useLocalizedContent();
+
   return (
     <section id="summary" className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -14,10 +16,10 @@ const Summary = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">
-            Background
+            {summary.badge}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Education & Languages
+            {summary.heading}
           </h2>
         </div>
 
@@ -31,7 +33,7 @@ const Summary = () => {
               </div>
               <div className="flex-1">
                 <h3 className="text-2xl font-bold text-white mb-1">
-                  Education
+                  {summary.educationTitle}
                 </h3>
                 <p className="text-white/50 text-sm">{education.period}</p>
               </div>
@@ -46,7 +48,7 @@ const Summary = () => {
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20">
                 <TrendingUp className="w-4 h-4 text-blue-300" />
                 <span className="text-blue-300 font-semibold text-sm">
-                  GPA: {education.gpa}
+                  {summary.stats.gpaLabel}: {education.gpa}
                 </span>
               </div>
             </div>
@@ -55,7 +57,9 @@ const Summary = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-white/70">
                 <Users className="w-4 h-4" />
-                <span className="font-medium text-sm">Teaching Assistant</span>
+                <span className="font-medium text-sm">
+                  {summary.teachingAssistantLabel}
+                </span>
               </div>
               <ul className="space-y-2 ml-6">
                 {education.roles.map((role, idx) => (
@@ -75,7 +79,7 @@ const Summary = () => {
               <div className="flex items-center gap-2 text-white/70">
                 <Award className="w-4 h-4" />
                 <span className="font-medium text-sm">
-                  Awards & Achievements
+                  {summary.awardsLabel}
                 </span>
               </div>
               <ul className="space-y-2 ml-6">
@@ -113,9 +117,11 @@ const Summary = () => {
               </div>
               <div className="flex-1">
                 <h3 className="text-2xl font-bold text-white mb-1">
-                  Languages
+                  {summary.languagesCardTitle}
                 </h3>
-                <p className="text-white/50 text-sm">Communication Skills</p>
+                <p className="text-white/50 text-sm">
+                  {summary.languagesCardDescription}
+                </p>
               </div>
             </div>
 
@@ -144,18 +150,28 @@ const Summary = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-300 mb-1">3</div>
-                <div className="text-white/50 text-xs">Languages</div>
+                <div className="text-2xl font-bold text-blue-300 mb-1">
+                  {languages.length}
+                </div>
+                <div className="text-white/50 text-xs">
+                  {summary.stats.languagesLabel}
+                </div>
               </div>
               <div className="text-center border-x border-white/10">
-                <div className="text-2xl font-bold text-blue-300 mb-1">20+</div>
-                <div className="text-white/50 text-xs">Projects</div>
+                <div className="text-2xl font-bold text-blue-300 mb-1">
+                  {summary.stats.projectsValue}
+                </div>
+                <div className="text-white/50 text-xs">
+                  {summary.stats.projectsLabel}
+                </div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-300 mb-1">
-                  3.88
+                  {education.gpa.split("/")[0]}
                 </div>
-                <div className="text-white/50 text-xs">GPA</div>
+                <div className="text-white/50 text-xs">
+                  {summary.stats.gpaLabel}
+                </div>
               </div>
             </div>
           </Card>

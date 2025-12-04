@@ -1,9 +1,11 @@
 import React from "react";
 import { Calendar, Building2 } from "lucide-react";
-import { experiences } from "../data/mockData";
 import { Card } from "./ui/card";
+import { useLocalizedContent } from "../context/LanguageContext";
 
 const Experience = () => {
+  const { experiences, experience } = useLocalizedContent();
+
   return (
     <section id="experience" className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -14,13 +16,13 @@ const Experience = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">
-            Career Journey
+            {experience.badge}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Professional Experience
+            {experience.heading}
           </h2>
           <p className="text-white/50 text-lg max-w-2xl mx-auto">
-            Building innovative digital solutions across multiple industries
+            {experience.description}
           </p>
         </div>
 

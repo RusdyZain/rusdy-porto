@@ -1,12 +1,13 @@
 import React from "react";
 import { Mail, Linkedin, Github, Phone, MapPin, Download } from "lucide-react";
-import { personalInfo } from "../data/mockData";
 import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
+import { useLocalizedContent } from "../context/LanguageContext";
 
 const Hero = () => {
   const [portraitLoaded, setPortraitLoaded] = React.useState(false);
   const [portraitError, setPortraitError] = React.useState(false);
+  const { personalInfo, hero } = useLocalizedContent();
 
   const handleDownloadCV = () => {
     window.open(personalInfo.cvUrl, "_blank");
@@ -32,7 +33,9 @@ const Hero = () => {
             {/* Open to Work Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-sm text-white/80">Open to work</span>
+              <span className="text-sm text-white/80">
+                {hero.badgeText}
+              </span>
             </div>
 
             {/* Role Tag */}
@@ -103,7 +106,7 @@ const Hero = () => {
                 className="group px-8 py-6 rounded-full bg-gradient-to-r from-blue-400 to-cyan-500 hover:from-blue-500 hover:to-cyan-600 text-white font-semibold text-base shadow-lg shadow-blue-500/40 hover:shadow-blue-500/70 transition-all duration-300 flex items-center gap-2"
               >
                 <Download className="w-5 h-5 group-hover:animate-bounce" />
-                Download CV
+                {hero.downloadCta}
               </Button>
             </div>
           </div>
@@ -138,7 +141,7 @@ const Hero = () => {
                   <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 bg-black/40 backdrop-blur">
                     <Skeleton className="w-20 h-20 rounded-full bg-white/10" />
                     <span className="text-xs uppercase tracking-wide text-white/70">
-                      Loading portrait
+                      {hero.loadingPortrait}
                     </span>
                   </div>
                 )}
@@ -146,9 +149,11 @@ const Hero = () => {
                 {portraitError && (
                   <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-2 bg-black/60 text-white/70">
                     <span className="text-sm font-semibold">
-                      Portrait unavailable
+                      {hero.portraitUnavailableTitle}
                     </span>
-                    <span className="text-xs">Periksa kembali file foto</span>
+                    <span className="text-xs">
+                      {hero.portraitUnavailableSubtitle}
+                    </span>
                   </div>
                 )}
 
@@ -156,7 +161,7 @@ const Hero = () => {
                 <div className="absolute bottom-6 left-6 right-6 z-20">
                   <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20">
                     <p className="text-white font-medium">
-                      Based in {personalInfo.location}
+                      {hero.locationPrefix} {personalInfo.location}
                     </p>
                   </div>
                 </div>
@@ -170,7 +175,7 @@ const Hero = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
         <div className="flex flex-col items-center gap-2 animate-bounce">
           <span className="text-white/40 text-xs uppercase tracking-wider">
-            Scroll
+            {hero.scrollText}
           </span>
           <div className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
         </div>
