@@ -2,8 +2,12 @@ import React from "react";
 import { Mail, Linkedin, Github, Phone, MapPin, Download } from "lucide-react";
 import { personalInfo } from "../data/mockData";
 import { Button } from "./ui/button";
+import { Skeleton } from "./ui/skeleton";
 
 const Hero = () => {
+  const [portraitLoaded, setPortraitLoaded] = React.useState(false);
+  const [portraitError, setPortraitError] = React.useState(false);
+
   const handleDownloadCV = () => {
     window.open(personalInfo.cvUrl, "_blank");
   };
@@ -121,8 +125,32 @@ const Hero = () => {
                 <img
                   src={personalInfo.portrait}
                   alt={personalInfo.name}
-                  className="w-full h-[600px] object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  onLoad={() => setPortraitLoaded(true)}
+                  onError={() => setPortraitError(true)}
+                  className={`w-full h-[600px] object-cover transition-opacity duration-500 ${
+                    portraitLoaded && !portraitError ? "opacity-100" : "opacity-0"
+                  }`}
                 />
+
+                {!portraitLoaded && !portraitError && (
+                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 bg-black/40 backdrop-blur">
+                    <Skeleton className="w-20 h-20 rounded-full bg-white/10" />
+                    <span className="text-xs uppercase tracking-wide text-white/70">
+                      Loading portrait
+                    </span>
+                  </div>
+                )}
+
+                {portraitError && (
+                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-2 bg-black/60 text-white/70">
+                    <span className="text-sm font-semibold">
+                      Portrait unavailable
+                    </span>
+                    <span className="text-xs">Periksa kembali file foto</span>
+                  </div>
+                )}
 
                 {/* Glass Badge */}
                 <div className="absolute bottom-6 left-6 right-6 z-20">
