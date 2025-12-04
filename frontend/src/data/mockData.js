@@ -234,7 +234,11 @@ export const localizedContent = {
         category: "design",
         icon: "LayoutDashboard",
       },
-      { name: "Figma & Dribbble-Style UI", category: "design", icon: "PenTool" },
+      {
+        name: "Figma & Dribbble-Style UI",
+        category: "design",
+        icon: "PenTool",
+      },
       { name: "Flutter", category: "mobile", icon: "Smartphone" },
       { name: "Node.js", category: "backend", icon: "Cpu" },
       { name: "Express.js", category: "backend", icon: "Database" },
@@ -265,7 +269,7 @@ export const localizedContent = {
     ],
     languages: [
       { name: "Indonesian", level: 100, proficiency: "Native" },
-      { name: "English", level: 75, proficiency: "Working Proficiency" },
+      { name: "English", level: 30, proficiency: "Working Proficiency" },
       { name: "Arabic", level: 40, proficiency: "Basic" },
     ],
     education: {
@@ -391,8 +395,7 @@ export const localizedContent = {
     experience: {
       badge: "Perjalanan Karier",
       heading: "Pengalaman Profesional",
-      description:
-        "Membangun solusi digital inovatif di berbagai industri",
+      description: "Membangun solusi digital inovatif di berbagai industri",
     },
     skillsSection: {
       badge: "Senjata Teknis",
@@ -485,7 +488,8 @@ export const localizedContent = {
       },
       toast: {
         title: "Pesan terkirim!",
-        description: "Terima kasih sudah menghubungi. Saya akan segera membalas.",
+        description:
+          "Terima kasih sudah menghubungi. Saya akan segera membalas.",
       },
     },
     footer: {
@@ -581,7 +585,11 @@ export const localizedContent = {
         category: "design",
         icon: "LayoutDashboard",
       },
-      { name: "Figma & Dribbble-Style UI", category: "design", icon: "PenTool" },
+      {
+        name: "Figma & Dribbble-Style UI",
+        category: "design",
+        icon: "PenTool",
+      },
       { name: "Flutter", category: "mobile", icon: "Smartphone" },
       { name: "Node.js", category: "backend", icon: "Cpu" },
       { name: "Express.js", category: "backend", icon: "Database" },
