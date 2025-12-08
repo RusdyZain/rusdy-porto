@@ -2,17 +2,24 @@ import React from "react";
 import { GraduationCap, Award, Users, TrendingUp } from "lucide-react";
 import { Card } from "./ui/card";
 import { useLocalizedContent } from "../context/LanguageContext";
+import { useParallax } from "../hooks/useParallax";
+import SectionParallax from "./SectionParallax";
 
 const Summary = () => {
   const { education, languages, summary } = useLocalizedContent();
+  const contentShift = useParallax(0.015);
 
   return (
     <section id="summary" className="relative py-24 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black"></div>
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent"></div>
+      <SectionParallax variant="blue" />
 
-      <div className="relative z-10 container mx-auto px-6 lg:px-12">
+      <div
+        className="relative z-10 container mx-auto px-6 lg:px-12 transition-transform duration-500"
+        style={{ transform: `translate3d(0, ${contentShift}px, 0)` }}
+      >
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">

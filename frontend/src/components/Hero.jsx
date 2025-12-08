@@ -4,15 +4,15 @@ import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
 import { useLocalizedContent } from "../context/LanguageContext";
 import { useParallax } from "../hooks/useParallax";
+import ParallaxScene from "./ParallaxScene";
 
 const Hero = () => {
   const [portraitLoaded, setPortraitLoaded] = React.useState(false);
   const [portraitError, setPortraitError] = React.useState(false);
   const { personalInfo, hero } = useLocalizedContent();
-  const gradientParallax = useParallax(-0.08);
-  const glowParallax = useParallax(0.15);
-  const portraitParallax = useParallax(-0.05);
-  const particleParallax = useParallax(0.12);
+  const contentParallax = useParallax(0.02);
+  const glowParallax = useParallax(0.08);
+  const portraitParallax = useParallax(-0.04);
 
   const handleDownloadCV = () => {
     window.open(personalInfo.cvUrl, "_blank");
@@ -26,33 +26,17 @@ const Hero = () => {
       {/* Cinematic Background with Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-zinc-900 to-black">
         <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-transparent to-cyan-600/10"></div>
-        <div
-          className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-blue-500/20 to-transparent blur-3xl"
-          style={{ transform: `translate3d(0, ${gradientParallax}px, 0)` }}
-        ></div>
-        <div
-          className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-cyan-500/20 to-transparent blur-3xl"
-          style={{ transform: `translate3d(0, ${-gradientParallax}px, 0)` }}
-        ></div>
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 20%, rgba(34,197,94,0.2), transparent 40%), radial-gradient(circle at 80% 10%, rgba(59,130,246,0.25), transparent 40%), radial-gradient(circle at 60% 80%, rgba(16,185,129,0.15), transparent 45%)",
-            transform: `translate3d(0, ${particleParallax}px, 0)`,
-          }}
-        ></div>
-        <div
-          className="absolute inset-x-0 top-1/2 h-1/2 bg-gradient-to-b from-transparent via-blue-500/10 to-transparent blur-3xl"
-          style={{ transform: `translate3d(0, ${glowParallax}px, 0)` }}
-        ></div>
+        <ParallaxScene />
       </div>
 
       {/* Content Grid */}
       <div className="relative z-10 container mx-auto px-6 lg:px-12 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div
+            className="space-y-8 transition-transform duration-500"
+            style={{ transform: `translate3d(0, ${contentParallax}px, 0)` }}
+          >
             {/* Open to Work Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>

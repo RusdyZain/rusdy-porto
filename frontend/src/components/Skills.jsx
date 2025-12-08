@@ -1,9 +1,12 @@
 import React from "react";
 import * as LucideIcons from "lucide-react";
 import { useLocalizedContent } from "../context/LanguageContext";
+import { useParallax } from "../hooks/useParallax";
+import SectionParallax from "./SectionParallax";
 
 const Skills = () => {
   const { skills, skillsSection } = useLocalizedContent();
+  const contentShift = useParallax(0.015);
   const getIcon = (iconName) => {
     const Icon = LucideIcons[iconName] || LucideIcons.Code;
     return <Icon className="w-6 h-6" />;
@@ -13,8 +16,12 @@ const Skills = () => {
     <section id="skills" className="relative py-24 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black"></div>
+      <SectionParallax variant="purple" />
 
-      <div className="relative z-10 container mx-auto px-6 lg:px-12">
+      <div
+        className="relative z-10 container mx-auto px-6 lg:px-12 transition-transform duration-500"
+        style={{ transform: `translate3d(0, ${contentShift}px, 0)` }}
+      >
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-blue-500/10 text-blue-300 border border-blue-500/20 mb-4">

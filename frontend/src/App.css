@@ -77,3 +77,18 @@ textarea {
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+@keyframes pulseSparkle {
+  0% {
+    opacity: 0.1;
+    box-shadow: 0 0 6px rgba(34, 211, 238, 0.3);
+  }
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.6);
+  }
+  100% {
+    opacity: 0.2;
+    box-shadow: 0 0 4px rgba(34, 211, 238, 0.2);
+  }
+}
