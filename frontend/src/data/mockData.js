@@ -159,7 +159,7 @@ export const localizedContent = {
       email: "rifkirusdisatmaputra@gmail.com",
       phone: "+62 877-1294-6545",
       linkedin: "linkedin.com/in/rifkirusdi30",
-      github: "github.com/rifkirusdi",
+      github: "github.com/RusdyZain",
       cvUrl:
         "https://docs.google.com/document/d/1--JL87xANrbNkV1Tzlzq3BOPUeFQI-G-/edit?usp=sharing&ouid=108859602331194458341&rtpof=true&sd=true",
       portrait: "/rusdy.png",
@@ -620,7 +620,7 @@ export const localizedContent = {
     ],
     languages: [
       { name: "Bahasa Indonesia", level: 100, proficiency: "Penutur asli" },
-      { name: "Bahasa Inggris", level: 75, proficiency: "Kemampuan kerja" },
+      { name: "Bahasa Inggris", level: 45, proficiency: "Kemampuan kerja" },
       { name: "Bahasa Arab", level: 40, proficiency: "Dasar" },
     ],
     education: {
