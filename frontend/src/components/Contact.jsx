@@ -42,7 +42,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative py-24 overflow-hidden">
+    <section
+      id="contact"
+      className="relative pt-24 pb-40 md:pb-48 overflow-hidden"
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent"></div>

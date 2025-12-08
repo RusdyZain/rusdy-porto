@@ -1,10 +1,12 @@
 import React from "react";
 import { Heart } from "lucide-react";
 import { useLocalizedContent } from "../context/LanguageContext";
+import packageInfo from "../../package.json";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { personalInfo, footer } = useLocalizedContent();
+  const appVersion = packageInfo.version;
 
   return (
     <footer className="relative py-12 overflow-hidden">
@@ -17,11 +19,10 @@ const Footer = () => {
         <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Left - Copyright */}
+          {/* Left - Version */}
           <div className="text-center md:text-left">
-            <p className="text-white/40 text-sm">
-              &copy; {currentYear} {personalInfo.name}. {footer.rights}
-            </p>
+            <p className="text-white/50 text-xs uppercase tracking-wider">{footer.versionLabel}</p>
+            <p className="text-white text-sm font-semibold">v{appVersion}</p>
           </div>
 
           {/* Center - Made with Love */}
@@ -31,17 +32,22 @@ const Footer = () => {
             <span>{footer.using}</span>
           </div>
 
-          {/* Right - Quick Links */}
-          <div className="flex gap-6">
-            {footer.quickLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-white/40 hover:text-blue-300 transition-colors text-sm"
-              >
-                {link.name}
-              </a>
-            ))}
+          {/* Right - Quick Links & Rights */}
+          <div className="flex flex-col items-center md:items-end gap-2">
+            <div className="flex gap-6">
+              {footer.quickLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-white/40 hover:text-blue-300 transition-colors text-sm"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+            <p className="text-white/40 text-xs text-center md:text-right">
+              &copy; {currentYear} {personalInfo.name}. {footer.rights}
+            </p>
           </div>
         </div>
 

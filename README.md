@@ -8,6 +8,10 @@ Repositori ini memuat kode frontend portofolio Rifki Rusdi Satma Putra yang diba
 - `tests/` - artefak pengujian otomatis dari Emergent Agent (tidak wajib dijalankan).
 - `contracts.md`, `test_result.md` - dokumentasi tambahan bawaan repositori.
 
+## Versi Aplikasi
+
+Versi aplikasi frontend saat ini mengikuti pola **Semantic Versioning** (MAJOR.MINOR.PATCH) dan berada pada `1.0.0`. Angka pertama berubah saat ada rilis besar/ breaking change, angka kedua untuk fitur baru yang kompatibel, dan angka ketiga untuk perbaikan bug.
+
 ## Menjalankan Frontend
 
 ```bash

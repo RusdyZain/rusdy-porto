@@ -145,6 +145,7 @@ export const localizedContent = {
       builtWith: "Built with",
       using: "using React & Tailwind CSS",
       rights: "All rights reserved.",
+      versionLabel: "Version",
       quickLinks: [
         { name: "Home", href: "#home" },
         { name: "Projects", href: "#projects" },
@@ -496,6 +497,7 @@ export const localizedContent = {
       builtWith: "Dibangun dengan",
       using: "menggunakan React & Tailwind CSS",
       rights: "Seluruh hak cipta dilindungi.",
+      versionLabel: "Versi",
       quickLinks: [
         { name: "Beranda", href: "#home" },
         { name: "Proyek", href: "#projects" },
