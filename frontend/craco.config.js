@@ -80,33 +80,63 @@ if (config.enableVisualEdits) {
   };
 }
 
-// Setup dev server with visual edits and/or health check
-if (config.enableVisualEdits || config.enableHealthCheck) {
-  webpackConfig.devServer = (devServerConfig) => {
-    // Apply visual edits dev server setup if enabled
-    if (config.enableVisualEdits && setupDevServer) {
-      devServerConfig = setupDevServer(devServerConfig);
-    }
+// Helper to convert deprecated onBefore/onAfter hooks from CRA config
+function shimDeprecatedDevServerHooks(devServerConfig) {
+  const { onBeforeSetupMiddleware, onAfterSetupMiddleware } = devServerConfig;
 
-    // Add health check endpoints if enabled
-    if (config.enableHealthCheck && setupHealthEndpoints && healthPluginInstance) {
-      const originalSetupMiddlewares = devServerConfig.setupMiddlewares;
-
-      devServerConfig.setupMiddlewares = (middlewares, devServer) => {
-        // Call original setup if exists
-        if (originalSetupMiddlewares) {
-          middlewares = originalSetupMiddlewares(middlewares, devServer);
-        }
-
-        // Setup health endpoints
-        setupHealthEndpoints(devServer, healthPluginInstance);
-
-        return middlewares;
-      };
-    }
-
+  if (!onBeforeSetupMiddleware && !onAfterSetupMiddleware) {
     return devServerConfig;
+  }
+
+  const originalSetupMiddlewares = devServerConfig.setupMiddlewares;
+
+  devServerConfig.setupMiddlewares = (middlewares, devServer) => {
+    if (typeof onBeforeSetupMiddleware === "function") {
+      onBeforeSetupMiddleware(devServer);
+    }
+
+    if (typeof originalSetupMiddlewares === "function") {
+      middlewares = originalSetupMiddlewares(middlewares, devServer) || middlewares;
+    }
+
+    if (typeof onAfterSetupMiddleware === "function") {
+      onAfterSetupMiddleware(devServer);
+    }
+
+    return middlewares;
   };
+
+  delete devServerConfig.onBeforeSetupMiddleware;
+  delete devServerConfig.onAfterSetupMiddleware;
+
+  return devServerConfig;
 }
+
+// Always setup dev server (even when optional modules disabled) so we can shim deprecated hooks
+webpackConfig.devServer = (devServerConfig = {}) => {
+  // Apply visual edits dev server setup if enabled
+  if (config.enableVisualEdits && setupDevServer) {
+    devServerConfig = setupDevServer(devServerConfig);
+  }
+
+  // Add health check endpoints if enabled
+  if (config.enableHealthCheck && setupHealthEndpoints && healthPluginInstance) {
+    const originalSetupMiddlewares = devServerConfig.setupMiddlewares;
+
+    devServerConfig.setupMiddlewares = (middlewares, devServer) => {
+      // Call original setup if exists
+      if (typeof originalSetupMiddlewares === "function") {
+        middlewares = originalSetupMiddlewares(middlewares, devServer);
+      }
+
+      // Setup health endpoints
+      setupHealthEndpoints(devServer, healthPluginInstance);
+
+      return middlewares;
+    };
+  }
+
+  return shimDeprecatedDevServerHooks(devServerConfig);
+};
 
 module.exports = webpackConfig;
